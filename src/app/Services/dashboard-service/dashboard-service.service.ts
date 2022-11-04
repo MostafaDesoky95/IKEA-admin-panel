@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable,map } from 'rxjs';
-import { Iuser } from 'src/app/Models/iuser';
+import { Iuser } from 'src/app/Models/icustomer';
 import {
   AngularFirestore,
   AngularFirestoreCollection,

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { OrdersService } from 'src/app/Services/orders.service';
 import { ProductsCrudService } from 'src/app/Services/products-crud.service';
 import { IOrder } from './../../../Models/iorder';
-import { UserService } from 'src/app/Services/user-service/user.service';
+import { UserService } from 'src/app/Services/user-service/customer.service';
 import { IProduct } from './../../../Models/iProducts';
 import { first } from 'rxjs';
 

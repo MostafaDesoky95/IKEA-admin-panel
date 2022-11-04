@@ -1,0 +1,110 @@
+<div class="container mat-elevation-z8 mat-app-background" >
+
+  <div class="row pt-5 justify-content-around">
+    <form class="col-5">
+      <div class="input-group">
+        <div class="input-group-append">
+          <span class="input-group-text">
+            <mat-icon aria-hidden="false" class="text-secondary"
+              >person_search</mat-icon
+            >
+          </span>
+        </div>
+        <input
+          matInput
+          placeholder="Search user"
+          class="form-control"
+          [(ngModel)]="searchText"
+          name="searchText"
+          (keyup)="onTextChange()"
+        />
+      </div>
+    </form>
+    <mat-form-field class="col-5 col-md-2">
+      <mat-label>Filter</mat-label>
+      <mat-select [(value)]="selected" (valueChange)="changeViewedList()">
+        <mat-option value="1">All Users</mat-option>
+        <mat-option value="2">Admins</mat-option>
+        <mat-option value="3">Not Admins</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-spinner [hidden]="!loading" diameter="30" class="mx-auto"></mat-spinner>
+
+  <mat-table [dataSource]="dataSource" [hidden]="loading">
+    <!-- Position Column -->
+    <ng-container matColumnDef="ID">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let element;">{{ element.ID }}</mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="FirstName">
+      <mat-header-cell *matHeaderCellDef>FirstName</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.FirstName }} 
+      </mat-cell>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="LastName">
+      <mat-header-cell *matHeaderCellDef>LastName</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.LastName }}</mat-cell>
+    </ng-container>
+
+    <!-- Mobile Column -->
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.Email }}</mat-cell>
+    </ng-container>
+
+    <!-- Address Column -->
+    <ng-container matColumnDef="PhoneNumber">
+      <mat-header-cell *matHeaderCellDef>PhoneNumber</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.PhoneNumber }}</mat-cell
+      >
+    </ng-container>
+
+    <!-- BirthDate Column -->
+    <ng-container matColumnDef="IsActive">
+      <mat-header-cell *matHeaderCellDef>IsActive</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.IsActive }}</mat-cell
+      >
+    </ng-container>
+
+    <!-- Add Admin Column -->
+    <!-- <ng-container matColumnDef="addAdmin">
+      <mat-header-cell *matHeaderCellDef>Add/Remove Admin</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          *ngIf="!checkIfAdmin(element.id)"
+          (click)="addNewAdmin(element)"
+        >
+          <mat-icon aria-hidden="false" [style.color]="'#04c9b7'" title="add"
+            >add_moderator</mat-icon
+          >
+        </button>
+        <button
+          mat-icon-button
+          *ngIf="checkIfAdmin(element.id)"
+          (click)="deleteAdmin(element.id)"
+        >
+          <mat-icon aria-hidden="false" class="text-danger" title="remove"
+            >remove_moderator</mat-icon
+          >
+        </button>
+      </mat-cell>
+    </ng-container> -->
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [length]="listOfUsers.length"
+    [pageSize]="5"
+    [pageSizeOptions]="[2, 5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>

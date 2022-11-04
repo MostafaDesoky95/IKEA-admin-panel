@@ -1,0 +1,9 @@
+$aqua: #04c9b7;
+
+table {
+    width: 100%;
+}
+:host ::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: $aqua;
+}

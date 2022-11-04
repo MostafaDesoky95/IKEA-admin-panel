@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ISubCateg } from '../Models/iSubCategory';
+import { ISubCateg } from '../Models/order-status';
 import { map } from 'rxjs/operators';
 import {
   AngularFirestore,

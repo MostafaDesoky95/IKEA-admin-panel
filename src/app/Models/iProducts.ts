@@ -1,20 +1,7 @@
 export interface IProduct {
-  id: string;
-  Color?: string;
-  ColorAr?: string;
-  CreatedAt?: string;
-  Description?: string;
-  DescriptionAr?: string;
-  Images?: string[];
-  Length?: number;
-  Width?: number;
+  ID: string;
+  IsActive:boolean;
   Name?: string;
-  NameAr?: string;
-  ProductName?: string;
+  Description?: string;
   Price?: number;
-  Quantity?: number;
-  Material?: string;
-  MaterialAr?: string;
-  Online?: string;
-  SubCategory?: string;
 }
